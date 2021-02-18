@@ -1,0 +1,38 @@
+version: '3'
+services:
+  lb: 
+    image: nginx:latest
+    container_name: production_nginx
+    volumes:
+      - ./nginxlb.conf:/etc/nginx/nginx.conf
+      - ./nginx/errorlb.log:/etc/nginx/error_log.log
+    ports:
+      - 8080:80
+
+  web1:
+    image: nginx:latest
+    container_name: web1
+    volumes:
+      - ./nginxweb1.conf:/etc/nginx/nginx.conf
+      - ./nginx/errorw1.log:/etc/nginx/error_log.log
+    ports:
+      - 8001:80
+
+  web2:
+    image: nginx:latest
+    container_name: web2
+    volumes:
+      - ./nginxweb2.conf:/etc/nginx/nginx.conf
+      - ./nginx/errorw2.log:/etc/nginx/error_log.log
+    ports:
+      - 8002:80
+
+  web3:
+    image: nginx:latest
+    container_name: web3
+    volumes:
+      - ./nginxweb3.conf:/etc/nginx/nginx.conf
+      - ./nginx/errorw3.log:/etc/nginx/error_log.log
+    ports:
+      - 8003:80
+
